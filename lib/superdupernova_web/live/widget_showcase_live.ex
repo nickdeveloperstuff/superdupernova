@@ -517,15 +517,11 @@ defmodule SuperdupernovaWeb.WidgetShowcaseLive do
   end
 
   @impl true
-  def handle_event("tab_clicked", %{"tab" => tab}, socket) do
+  def handle_event("switch_tab", %{"tab" => tab}, socket) do
     {:noreply, assign(socket, active_tab: String.to_atom(tab))}
   end
 
   @impl true
-  def handle_event("demo_tab_clicked", %{"tab" => tab}, socket) do
-    {:noreply, assign(socket, demo_tab: String.to_atom(tab))}
-  end
-  
   def handle_event(event, params, socket) do
     IO.inspect({event, params}, label: "Unhandled event")
     {:noreply, socket}
