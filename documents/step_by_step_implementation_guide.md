@@ -90,6 +90,8 @@ _Record any compilation errors or configuration issues here_
 
 ```css
 /* Lego Grid System */
+/* Note: Full-width design with thin padding for maximum screen usage */
+/* Desktop-first means no mobile breakpoints, not width constraints */
 :root {
   --lego-unit: 0.25rem;
   --lego-gutter: 1rem;
@@ -97,12 +99,12 @@ _Record any compilation errors or configuration issues here_
 }
 
 .lego-container {
-  @apply w-full mx-auto px-unit-4;
-  max-width: 1280px;
+  @apply w-full px-2 py-2;
 }
 
 .lego-grid {
-  @apply grid grid-cols-lego gap-lego;
+  @apply grid grid-cols-12 gap-4;
+  grid-auto-rows: minmax(100px, auto);
 }
 
 .lego-page {
@@ -113,9 +115,12 @@ _Record any compilation errors or configuration issues here_
 /* Widget Size Classes */
 .widget-1x1 { @apply col-span-1; }
 .widget-2x1 { @apply col-span-2; }
+.widget-3x1 { @apply col-span-3; }
 .widget-4x1 { @apply col-span-4; }
 .widget-6x1 { @apply col-span-6; }
+.widget-8x1 { @apply col-span-8; }
 .widget-12x1 { @apply col-span-12; }
+.widget-6x2 { @apply col-span-6 row-span-2; }
 .widget-12x2 { @apply col-span-12 row-span-2; }
 .widget-12x4 { @apply col-span-12 row-span-4; }
 ```

@@ -14,7 +14,9 @@ This document proposes a comprehensive lego-brick UI component system for Superd
 ### 2. Grid System Architecture
 - **Column Count**: 12-column base grid
 - **Gutter**: 16pt (4 units / 1rem) standard spacing
-- **Responsive**: Desktop-first with fluid adaptation
+- **Full-Width Design**: Uses entire screen width with thin padding
+- **Desktop-First**: No mobile breakpoints, relies on user zoom for large monitors
+- **Form Readability**: Use 6x1 widgets (~50% width) for optimal form inputs
 
 ### 3. Widget Size Standardization
 Each widget has predictable dimensions based on grid units:
@@ -69,12 +71,12 @@ module.exports = {
 }
 
 .lego-container {
-  @apply w-full mx-auto px-unit-4;
-  max-width: 1280px; /* Desktop-first constraint */
+  @apply w-full px-2 py-2; /* Thin padding for full-width design */
 }
 
 .lego-grid {
-  @apply grid grid-cols-lego gap-lego;
+  @apply grid grid-cols-12 gap-4;
+  grid-auto-rows: minmax(100px, auto); /* Consistent row heights */
 }
 
 /* Prevent horizontal scroll */

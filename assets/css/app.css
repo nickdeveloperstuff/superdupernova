@@ -113,7 +113,7 @@
 }
 
 .lego-container {
-  @apply w-full;
+  @apply w-full px-2 py-2;
 }
 
 .lego-grid {
