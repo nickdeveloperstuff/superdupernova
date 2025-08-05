@@ -39,6 +39,9 @@ defmodule SuperdupernovaWeb.Router do
       
       live "/test-layout", TestLayoutLive
       live "/form-test", FormTestLive
+      live "/action-test", ActionTestLive
+      live "/display-test", DisplayTestLive
+      live "/tabs-test", TabsTestLive
     end
   end
 
