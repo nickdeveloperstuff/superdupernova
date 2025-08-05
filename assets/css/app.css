@@ -104,3 +104,36 @@
 [data-phx-session], [data-phx-teleported-src] { display: contents }
 
 /* This file is for your main application CSS */
+
+/* Lego Grid System */
+:root {
+  --lego-unit: 0.25rem;
+  --lego-gutter: 1rem;
+  --lego-columns: 12;
+}
+
+.lego-container {
+  @apply w-full;
+}
+
+.lego-grid {
+  @apply grid grid-cols-12 gap-4;
+  grid-auto-rows: minmax(100px, auto);
+}
+
+.lego-page {
+  @apply overflow-x-hidden overflow-y-auto;
+  min-height: 100vh;
+}
+
+/* Widget Size Classes */
+.widget-1x1 { @apply col-span-1; }
+.widget-2x1 { @apply col-span-2; }
+.widget-3x1 { @apply col-span-3; }
+.widget-4x1 { @apply col-span-4; }
+.widget-6x1 { @apply col-span-6; }
+.widget-8x1 { @apply col-span-8; }
+.widget-12x1 { @apply col-span-12; }
+.widget-6x2 { @apply col-span-6 row-span-2; }
+.widget-12x2 { @apply col-span-12 row-span-2; }
+.widget-12x4 { @apply col-span-12 row-span-4; }
