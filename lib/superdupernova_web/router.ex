@@ -38,6 +38,7 @@ defmodule SuperdupernovaWeb.Router do
       # on_mount {SuperdupernovaWeb.LiveUserAuth, :live_no_user}
       
       live "/test-layout", TestLayoutLive
+      live "/form-test", FormTestLive
     end
   end
 
