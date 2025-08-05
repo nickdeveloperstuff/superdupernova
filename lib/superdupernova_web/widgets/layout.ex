@@ -121,4 +121,65 @@ defmodule SuperdupernovaWeb.Widgets.Layout do
     </div>
     """
   end
+  
+  @doc """
+  Accordion widget for collapsible content
+  """
+  attr :items, :list, required: true
+  attr :multiple, :boolean, default: false
+  
+  def accordion(assigns) do
+    ~H"""
+    <div class="widget-12x1">
+      <%= for {id, title, content} <- @items do %>
+        <div class="collapse collapse-arrow bg-base-200 mb-2">
+          <input 
+            type={if @multiple, do: "checkbox", else: "radio"} 
+            name="accordion-group"
+            id={"accordion-#{id}"}
+          /> 
+          <label for={"accordion-#{id}"} class="collapse-title text-lg font-medium">
+            <%= title %>
+          </label>
+          <div class="collapse-content"> 
+            <p><%= content %></p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    """
+  end
+  
+  @doc """
+  Drawer widget for slide-out panels
+  """
+  attr :id, :string, required: true
+  attr :side, :string, default: "left", values: ["left", "right"]
+  
+  slot :toggle, required: true
+  slot :content, required: true
+  slot :main, required: true
+  
+  def drawer(assigns) do
+    ~H"""
+    <div class="drawer">
+      <input id={@id} type="checkbox" class="drawer-toggle" />
+      <div class="drawer-content">
+        <!-- Page content -->
+        <%= render_slot(@main) %>
+        <!-- Toggle button -->
+        <label for={@id} class="drawer-button btn btn-primary">
+          <%= render_slot(@toggle) %>
+        </label>
+      </div> 
+      <div class="drawer-side">
+        <label for={@id} class="drawer-overlay"></label>
+        <div class={"menu p-4 w-80 min-h-full bg-base-200 text-base-content"}>
+          <!-- Sidebar content -->
+          <%= render_slot(@content) %>
+        </div>
+      </div>
+    </div>
+    """
+  end
 end

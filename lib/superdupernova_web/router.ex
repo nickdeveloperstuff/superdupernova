@@ -42,6 +42,10 @@ defmodule SuperdupernovaWeb.Router do
       live "/action-test", ActionTestLive
       live "/display-test", DisplayTestLive
       live "/tabs-test", TabsTestLive
+      live "/drawer-test", DrawerTestLive
+      live "/layout-test", DrawerTestLive  # Adding both routes as guide uses /layout-test
+      live "/ash-form-test", AshFormTestLive
+      live "/widget-showcase", WidgetShowcaseLive
     end
   end
 

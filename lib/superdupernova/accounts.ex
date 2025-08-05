@@ -8,5 +8,7 @@ defmodule Superdupernova.Accounts do
   resources do
     resource Superdupernova.Accounts.Token
     resource Superdupernova.Accounts.User
+    resource Superdupernova.Accounts.TestUser
+    resource Superdupernova.Accounts.Address
   end
 end

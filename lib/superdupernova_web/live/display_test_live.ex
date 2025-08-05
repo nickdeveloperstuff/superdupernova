@@ -136,6 +136,59 @@ defmodule SuperdupernovaWeb.DisplayTestLive do
           <.stat title="Tasks Done" value="86%" />
         </.lego_grid>
         
+        <h2 class="text-xl font-semibold mb-unit-2 mt-unit-4">Steps Widget</h2>
+        <.lego_grid>
+          <.steps 
+            steps={["Account", "Profile", "Shipping", "Payment", "Review"]} 
+            current_step={2} 
+          />
+          
+          <h3 class="text-lg font-semibold mb-unit-2 mt-unit-4 widget-12x1">Different Progress States</h3>
+          
+          <.steps 
+            steps={["Start", "Processing", "Complete"]} 
+            current_step={0} 
+          />
+          
+          <.steps 
+            steps={["Draft", "Review", "Approved", "Published"]} 
+            current_step={3} 
+          />
+        </.lego_grid>
+        
+        <h2 class="text-xl font-semibold mb-unit-2 mt-unit-4">Loading and Skeleton Widgets</h2>
+        <.lego_grid>
+          <div class="widget-12x1">
+            <h3 class="text-lg font-semibold mb-2">Loading Spinners</h3>
+            <div class="flex items-center space-x-4">
+              <.loading size="xs" />
+              <.loading size="sm" />
+              <.loading size="md" />
+              <.loading size="lg" />
+              <span class="ml-4 text-sm">Different sizes</span>
+            </div>
+          </div>
+          
+          <div class="widget-12x1">
+            <h3 class="text-lg font-semibold mb-2">Skeleton Loaders</h3>
+          </div>
+          
+          <div class="widget-6x1">
+            <h4 class="text-sm font-medium mb-2">Text Skeleton</h4>
+            <.skeleton type="text" lines={4} />
+          </div>
+          
+          <div class="widget-6x1">
+            <h4 class="text-sm font-medium mb-2">Card Skeleton</h4>
+            <.skeleton type="card" />
+          </div>
+          
+          <div class="widget-12x1">
+            <h4 class="text-sm font-medium mb-2">Image Skeleton</h4>
+            <.skeleton type="image" />
+          </div>
+        </.lego_grid>
+        
         <h2 class="text-xl font-semibold mb-unit-2 mt-unit-4">Layout Enhancement Widgets</h2>
         
         <.divider label="Divider with Label" />

@@ -210,6 +210,68 @@ defmodule SuperdupernovaWeb.Widgets.Display do
     """
   end
 
+  @doc """
+  Steps widget for progress indication
+  """
+  attr :steps, :list, required: true
+  attr :current_step, :integer, default: 0
+  
+  def steps(assigns) do
+    ~H"""
+    <div class="widget-12x1">
+      <ul class="steps w-full">
+        <%= for {step, index} <- Enum.with_index(@steps) do %>
+          <li class={step_class(index, @current_step)}>
+            <%= step %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+    """
+  end
+  
+  defp step_class(index, current) when index < current, do: "step step-primary"
+  defp step_class(index, current) when index == current, do: "step step-primary"
+  defp step_class(_, _), do: "step"
+  
+  @doc """
+  Loading spinner widget
+  """
+  attr :size, :string, default: "md", values: ["xs", "sm", "md", "lg"]
+  attr :variant, :string, default: "spinner"
+  
+  def loading(assigns) do
+    ~H"""
+    <span class={"loading loading-#{@variant} loading-#{@size}"}></span>
+    """
+  end
+  
+  @doc """
+  Skeleton loader widget
+  """
+  attr :type, :string, default: "text", values: ["text", "card", "image"]
+  attr :lines, :integer, default: 3
+  
+  def skeleton(assigns) do
+    ~H"""
+    <div class="widget-12x1">
+      <%= case @type do %>
+        <% "text" -> %>
+          <%= for _ <- 1..@lines do %>
+            <div class="skeleton h-4 w-full mb-2"></div>
+          <% end %>
+        <% "card" -> %>
+          <div class="skeleton h-32 w-full mb-4"></div>
+          <div class="skeleton h-4 w-28 mb-2"></div>
+          <div class="skeleton h-4 w-full mb-2"></div>
+          <div class="skeleton h-4 w-full"></div>
+        <% "image" -> %>
+          <div class="skeleton h-48 w-full"></div>
+      <% end %>
+    </div>
+    """
+  end
+
   defp grid_size_class("3x2"), do: "widget-4x1"
   defp grid_size_class("4x4"), do: "widget-4x1"
   defp grid_size_class("6x4"), do: "widget-6x1"
